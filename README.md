@@ -74,7 +74,6 @@ CLIENT_URL=http://localhost:5173
 
 ## 🏗️ Folder Structure
 ```
-DevCircle/
 │── backend/         # Node.js & Express.js backend (API & WebSocket server)
 │── frontend/        # React.js frontend
 │── .env             # Environment variables
@@ -108,6 +107,5 @@ This project is **MIT Licensed**. You are free to use, modify, and distribute it
 
 ## 📬 Contact
 💡 **Developer:** ANURAG MISHRA  
-📧 **Email:** anurag.mishra150304@gmail.com  
-🐙 **GitHub:** [yourusername](https://github.com/yourusername)  
-🔗 **LinkedIn:** [yourprofile](https://linkedin.com/in/yourprofile)
+📧 **Email:** anurag.mishra150304@gmail.com
+🔗 **LinkedIn:** [yourprofile](https://linkedin.com/in/anurag-mishra-283428164)
