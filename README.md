@@ -108,4 +108,8 @@ This project is **MIT Licensed**. You are free to use, modify, and distribute it
 ## 📬 Contact
 💡 **Developer:** ANURAG MISHRA  
 📧 **Email:** anurag.mishra150304@gmail.com    
+<<<<<<< HEAD
 🔗 **LinkedIn:** [anurag-mishra-283428164](https://linkedin.com/in/anurag-mishra-283428164)
+=======
+🔗 **LinkedIn:** [anurag-mishra-283428164](https://linkedin.com/in/anurag-mishra-283428164)
+>>>>>>> 420c92cc22d75aa9f1430a1cf196b95c8ec0acd7
