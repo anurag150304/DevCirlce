@@ -107,5 +107,5 @@ This project is **MIT Licensed**. You are free to use, modify, and distribute it
 
 ## 📬 Contact
 💡 **Developer:** ANURAG MISHRA  
-📧 **Email:** anurag.mishra150304@gmail.com
+📧 **Email:** anurag.mishra150304@gmail.com    
 🔗 **LinkedIn:** [yourprofile](https://linkedin.com/in/anurag-mishra-283428164)
