@@ -11,7 +11,7 @@ let io;
 export const initializeSocket = (httpServer) => {
     io = new Server(httpServer, {
         cors: {
-            origin: "http://localhost:5173", // Update this with your frontend's origin for security
+            origin: "https://dev-cirlce.vercel.app", // Update this with your frontend's origin for security
             methods: ['GET', 'POST', 'PUT', 'DELETE'],
         },
     });
