@@ -22,6 +22,16 @@ App.use(express.urlencoded({ extended: true }));
 App.use((req, res, next) => {
     res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
     res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+    res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+    res.setHeader("Access-Control-Allow-Origin", req.get("Origin") || "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Cross-Origin-Opener-Policy, Cross-Origin-Embedder-Policy");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+
+    if (req.method === "OPTIONS") {
+        return res.sendStatus(204);
+    }
+
     next();
 });
 
