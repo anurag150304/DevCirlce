@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/user.context";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import LoadingBar from "../components/loadingBar";
+import LoadingBar from "../components/LoadingBar.jsx";
 
 export const UserProtectedWrapper = ({ children }) => {
     const { setUser } = useContext(UserContext);
