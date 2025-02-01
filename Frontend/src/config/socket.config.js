@@ -7,13 +7,9 @@ export const InitializeSocket = (projectId) => {
         query: { projectId }
     });
 
-    socket.on("connect", () => {
-        console.log("Connected to socket server:", socket.id);
-    });
+    socket.on("connect");
 
-    socket.on("disconnect", () => {
-        console.log("Disconnected from socket server");
-    });
+    socket.on("disconnect");
 
     return () => {
         socket.disconnect();
