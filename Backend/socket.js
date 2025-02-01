@@ -11,12 +11,13 @@ let io;
 export const initializeSocket = (httpServer) => {
     io = new Server(httpServer, {
         cors: {
-            origin: "https://dev-cirlce.vercel.app", // Update this with your frontend's origin for security
+            origin: "https://dev-cirlce.vercel.app",
             methods: ['GET', 'POST', 'PUT', 'DELETE'],
         },
     });
 
     io.use(async (socket, next) => {
+        console.log(`Socket connected: ${socket.id}`);
         const token = socket.handshake.auth?.token || socket.handshake.headers.authorization?.split(" ")[1];
         if (!token) return next(new Error("No token provided."));
 

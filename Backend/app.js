@@ -19,6 +19,12 @@ App.use(cookieParser());
 App.use(express.json());
 App.use(express.urlencoded({ extended: true }));
 
+App.use((req, res, next) => {
+    res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+    res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+    next();
+});
+
 App.use("/users", userRoute);
 App.use("/projects", projectRoute);
 App.use("/genie", genieRoute);
