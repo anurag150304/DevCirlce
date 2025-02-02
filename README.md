@@ -68,7 +68,7 @@ CLIENT_URL=http://localhost:5173
 ---
 
 ## 🎥 Demo
-🚀 **Live Demo:** [DevCircle](https://your-live-demo-link.com)
+🚀 **Live Demo:** [DevCircle](https://dev-cirlce.vercel.app/)
 
 ---
 
