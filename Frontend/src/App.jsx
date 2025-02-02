@@ -19,7 +19,7 @@ function App() {
     { path: "/dashboard", element: <UserProtectedWrapper><Dashboard /></UserProtectedWrapper> },
     { path: "*", element: <NotFound /> }
   ])
-  return (<RouterProvider router={router} />)
+  return (<RouterProvider router={router} />);
 }
 
 export default App
