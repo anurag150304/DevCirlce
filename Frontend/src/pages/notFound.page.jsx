@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { not_found } from "../assets/png/not_found.png"
 
 export const NotFound = () => {
     return (
@@ -15,7 +16,7 @@ export const NotFound = () => {
             <p className="text-gray-500">It may have been moved or deleted.</p>
 
             <motion.img
-                src="https://cdni.iconscout.com/illustration/premium/thumb/404-error-page-3101048-2583784.png"
+                src={not_found}
                 alt="Page Not Found"
                 className="w-full max-w-sm mt-6"
                 initial={{ opacity: 0, y: 20 }}

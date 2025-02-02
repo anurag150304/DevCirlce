@@ -48,9 +48,9 @@ export const Home = () => {
                         <Link to="/register" className="px-6 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition cursor-pointer">
                             Get Started
                         </Link>
-                        <Link to="#features" className="ml-4 px-6 py-3 bg-gray-700 text-white rounded-lg shadow-md hover:bg-gray-600 transition cursor-pointer">
+                        <a href="#features" className="ml-4 px-6 py-3 bg-gray-700 text-white rounded-lg shadow-md hover:bg-gray-600 transition cursor-pointer">
                             Learn More
-                        </Link>
+                        </a>
                     </div>
                 </motion.div>
 
