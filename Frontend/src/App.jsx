@@ -7,6 +7,7 @@ import { Projects } from "./pages/projects.page";
 import { Dashboard } from "./pages/dashboard.page";
 import { Logout } from "./pages/logout.page";
 import { AuthProtectWrapper } from "./utils/authProtectWrapper";
+import { NotFound } from "./pages/notFound.page";
 
 function App() {
   const router = createBrowserRouter([
@@ -16,6 +17,7 @@ function App() {
     { path: "/logout", element: <UserProtectedWrapper><Logout /></UserProtectedWrapper> },
     { path: "/home", element: <UserProtectedWrapper><Projects /></UserProtectedWrapper> },
     { path: "/dashboard", element: <UserProtectedWrapper><Dashboard /></UserProtectedWrapper> },
+    { path: "*", element: <NotFound /> }
   ])
   return (<RouterProvider router={router} />)
 }
