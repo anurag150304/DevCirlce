@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { not_found } from "../assets/png/not_found.png"
+import not_found from "../assets/png/not_found.png"
 
 export const NotFound = () => {
     return (
