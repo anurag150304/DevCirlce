@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import AI from "../assets/png/AI.png";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -44,12 +45,12 @@ export const Home = () => {
                         together in a seamless environment.
                     </p>
                     <div className="mt-6">
-                        <a href="/register" className="px-6 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition cursor-pointer">
+                        <Link to="/register" className="px-6 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition cursor-pointer">
                             Get Started
-                        </a>
-                        <a href="#features" className="ml-4 px-6 py-3 bg-gray-700 text-white rounded-lg shadow-md hover:bg-gray-600 transition cursor-pointer">
+                        </Link>
+                        <Link to="#features" className="ml-4 px-6 py-3 bg-gray-700 text-white rounded-lg shadow-md hover:bg-gray-600 transition cursor-pointer">
                             Learn More
-                        </a>
+                        </Link>
                     </div>
                 </motion.div>
 

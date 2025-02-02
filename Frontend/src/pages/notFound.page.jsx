@@ -25,8 +25,7 @@ export const NotFound = () => {
 
             <Link
                 to="/"
-                className="mt-6 px-6 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
-            >
+                className="mt-6 px-6 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition duration-300">
                 Go Back Home
             </Link>
         </motion.div>
