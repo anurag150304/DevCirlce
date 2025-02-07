@@ -7,8 +7,8 @@ export const Footer = () => {
                 <p>© 2025 DevCircle AI. All rights reserved.</p>
                 <p>
                     Built with ❤️ by{" "}
-                    <NavLink to="/#" className="text-blue-500 hover:text-blue-400 transition">
-                        Your Team
+                    <NavLink to="https://www.linkedin.com/in/anurag-mishra-283428164/" className="text-blue-500 hover:text-blue-400 transition">
+                        Anurag Mishra
                     </NavLink>
                 </p>
             </div>
