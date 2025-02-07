@@ -11,7 +11,7 @@ let io;
 export const initializeSocket = (httpServer) => {
     io = new Server(httpServer, {
         cors: {
-            origin: "https://dev-cirlce.vercel.app",
+            origin: "*",
             methods: ['GET', 'POST', 'PUT', 'DELETE'],
         },
     });
