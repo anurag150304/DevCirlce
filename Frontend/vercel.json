@@ -10,6 +10,10 @@
                 {
                     "key": "Cross-Origin-Embedder-Policy",
                     "value": "require-corp"
+                },
+                {
+                    "key": "Content-Security-Policy",
+                    "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://your-external-script-source.com; style-src 'self' 'unsafe-inline'; connect-src *;"
                 }
             ]
         }
