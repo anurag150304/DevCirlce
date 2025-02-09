@@ -553,7 +553,7 @@ export const Dashboard = () => {
                                                 </div>
 
                                                 {/* Monaco Editor */}
-                                                <div className="h-full w-full pt-10">
+                                                <div className="h-full w-full pt-10 px-1">
                                                     <Editor
                                                         height="100%"
                                                         width="100%"
