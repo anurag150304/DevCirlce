@@ -553,25 +553,28 @@ export const Dashboard = () => {
                                                     </button>
                                                 </div>
 
-                                                <div className="h-full w-full pt-10 px-1">
-                                                    <CodeMirror
-                                                        value={fileTree.current[activeFile].file.contents}
-                                                        height="100%"
-                                                        theme={dracula}
-                                                        extensions={[javascript()]}
-                                                        onChange={(newValue) => {
-                                                            fileTree.current[activeFile].file.contents = newValue;
-                                                            saveFileTree(fileTree.current);
-                                                            webContainer?.fs.writeFile(`/${activeFile}`, newValue);
-                                                        }}
-                                                        basicSetup={{
-                                                            lineNumbers: true,
-                                                            highlightActiveLine: true,
-                                                            autocompletion: true,
-                                                        }}
-                                                        className="h-full"
-                                                    />
+                                                <div className="h-full w-full pt-1 px-1 flex flex-col">
+                                                    <div className="flex-1 overflow-auto bg-[#282a36]">
+                                                        <CodeMirror
+                                                            value={fileTree.current[activeFile].file.contents}
+                                                            // height="80.5vh" // Ensures full viewport height
+                                                            className="h-[10vh]"
+                                                            theme={dracula}
+                                                            extensions={[javascript()]}
+                                                            onChange={(newValue) => {
+                                                                fileTree.current[activeFile].file.contents = newValue;
+                                                                saveFileTree(fileTree.current);
+                                                                webContainer?.fs.writeFile(`/${activeFile}`, newValue);
+                                                            }}
+                                                            basicSetup={{
+                                                                lineNumbers: true,
+                                                                highlightActiveLine: true,
+                                                                autocompletion: true,
+                                                            }}
+                                                        />
+                                                    </div>
                                                 </div>
+
                                             </div>
                                         </div>
                                     )}
