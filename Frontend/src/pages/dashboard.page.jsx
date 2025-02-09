@@ -1,5 +1,7 @@
 import axios from "axios";
-import Editor from "@monaco-editor/react";
+import CodeMirror from "@uiw/react-codemirror";
+import { javascript } from "@codemirror/lang-javascript";
+import { dracula } from "@uiw/codemirror-theme-dracula";
 import ReactMarkdown from "react-markdown";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,7 +13,6 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { InitializeSocket, receiveMessage, sendMessage } from "../config/socket.config.js";
 
 export const Dashboard = () => {
-    const language = useRef(null);
     const fileTree = useRef(null);
     const location = useLocation();
     const editorRef = useRef(null);
@@ -552,45 +553,23 @@ export const Dashboard = () => {
                                                     </button>
                                                 </div>
 
-                                                {/* Monaco Editor */}
                                                 <div className="h-full w-full pt-10 px-1">
-                                                    <Editor
-                                                        height="100%"
-                                                        width="100%"
-                                                        theme="vs-dark"
-                                                        defaultLanguage="javascript"
-                                                        language={language.current}
+                                                    <CodeMirror
                                                         value={fileTree.current[activeFile].file.contents}
-                                                        onMount={(editor) => {
-                                                            editorRef.current = editor;
-                                                            requestAnimationFrame(() => {
-                                                                editor.layout();
-                                                            });
-                                                        }}
+                                                        height="100%"
+                                                        theme={dracula}
+                                                        extensions={[javascript()]}
                                                         onChange={(newValue) => {
                                                             fileTree.current[activeFile].file.contents = newValue;
                                                             saveFileTree(fileTree.current);
                                                             webContainer?.fs.writeFile(`/${activeFile}`, newValue);
                                                         }}
-                                                        options={{
-                                                            readOnly: false,
-                                                            fontSize: 14,
-                                                            minimap: { enabled: false },
-                                                            scrollBeyondLastLine: false,
-                                                            automaticLayout: false,
-                                                            scrollbar: {
-                                                                vertical: "visible",
-                                                                horizontal: "visible",
-                                                                verticalScrollbarSize: 10,
-                                                                horizontalScrollbarSize: 10,
-                                                                alwaysConsumeMouseWheel: false
-                                                            },
-                                                            padding: { top: 10, bottom: 10 },
-                                                            fixedOverflowWidgets: true,
-                                                            overviewRulerLanes: 0,
-                                                            overviewRulerBorder: false,
-                                                            hideCursorInOverviewRuler: true
+                                                        basicSetup={{
+                                                            lineNumbers: true,
+                                                            highlightActiveLine: true,
+                                                            autocompletion: true,
                                                         }}
+                                                        className="h-full"
                                                     />
                                                 </div>
                                             </div>
