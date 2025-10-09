@@ -1,15 +1,16 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 import crypto from "crypto";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_AI_API);
+const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_AI_API });
+async function model(prompt) {
 
-const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
-    generationConfig: {
-        responseMimeType: "application/json",
-        temperature: 0.4,
-    },
-    systemInstruction: `
+    return await genAI.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: prompt,
+        config: {
+            responseMimeType: "application/json",
+            temperature: 0.4,
+            systemInstruction: `
 Your name is Genie. Your owner is Anurag Mishra, who developed you to assist developers with programming-related queries.
 You are a highly skilled Full Stack Developer who follows industry best practices.
 You generate **clean, modular, scalable, and optimized** code, handling edge cases, errors, and exceptions properly.
@@ -70,12 +71,14 @@ You provide **clear comments** and maintain a **structured project setup** with 
 ✔️ **Ensure JSON responses are valid and well-formatted.**  
 ✔️ **No extra characters, unnecessary explanations, or Markdown formatting inside code files.**  
 ✔️ **Avoid filenames like "routes/index.js".**
-`
-});
+            `
+        },
+    });
+}
 
 export const generateContent = async (prompt) => {
-    const result = await model.generateContent(prompt);
-    const responseText = result.response.text();
+    const result = await model(prompt);
+    const responseText = result.text;
 
     try {
         const jsonResponse = JSON.parse(responseText);
