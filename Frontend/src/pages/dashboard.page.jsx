@@ -40,15 +40,14 @@ export const Dashboard = () => {
         InitializeSocket(project.current?._id);
         receiveMessage("project-message", (data) => handleIncomingMessage(data));
         initializeWebContainer();
-        async function initializeWebContainer() {
-            if (!webContainer) {
-                const container = await WebContainer.getWebContainer();
-                setWebContainer(container);
-            }
+    }, []);
+
+    const initializeWebContainer = async () => {
+        if (!webContainer) {
+            const container = await WebContainer.getWebContainer();
+            setWebContainer(container);
         }
-
-    }, [webContainer]);
-
+    }
 
     useEffect(() => {
         async function getUsers() {
@@ -100,7 +99,7 @@ export const Dashboard = () => {
         getUsers();
         getProjectUsers();
         getFileTree();
-    }, []);
+    }, [project?.current]);
 
     useEffect(() => {
         if (chatContainerRef.current) {
