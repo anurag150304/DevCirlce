@@ -40,14 +40,15 @@ export const Dashboard = () => {
         InitializeSocket(project.current?._id);
         receiveMessage("project-message", (data) => handleIncomingMessage(data));
         initializeWebContainer();
-    }, []);
-
-    const initializeWebContainer = async () => {
-        if (!webContainer) {
-            const container = await WebContainer.getWebContainer();
-            setWebContainer(container);
+        async function initializeWebContainer() {
+            if (!webContainer) {
+                const container = await WebContainer.getWebContainer();
+                setWebContainer(container);
+            }
         }
-    }
+
+    }, [webContainer]);
+
 
     useEffect(() => {
         async function getUsers() {
@@ -99,7 +100,7 @@ export const Dashboard = () => {
         getUsers();
         getProjectUsers();
         getFileTree();
-    }, [project?.current]);
+    }, []);
 
     useEffect(() => {
         if (chatContainerRef.current) {
@@ -145,7 +146,7 @@ export const Dashboard = () => {
                 { headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` } });
 
             if (response.status === 200) {
-                setAddedUsers(Array.from(new Set([...prevUsers, ...response.data.users])));
+                setAddedUsers(Array.from(new Set([...addedUsers, ...response.data.users])));
             }
         } catch (error) {
             console.error(error.response.data.message || "Failed to add users to project:");
@@ -203,7 +204,7 @@ export const Dashboard = () => {
             <ReactMarkdown
                 className="text-white w-full break-words overflow-x-scroll"
                 components={{
-                    code({ node, inline, className, children, ...props }) {
+                    code({ inline, className, children, ...props }) {
                         const match = /language-(\w+)/.exec(className || "");
                         return !inline && match ? (
                             <SyntaxHighlighter
