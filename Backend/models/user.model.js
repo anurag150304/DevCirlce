@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
+import { Schema, model } from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
     fullname: {
         firstname: {
             type: String,
@@ -42,5 +42,5 @@ userSchema.statics.hashPassword = async function (password) {
     return await bcrypt.hash(password, 10);
 };
 
-const userModel = mongoose.model("user", userSchema);
+const userModel = model("user", userSchema);
 export default userModel;

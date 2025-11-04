@@ -6,7 +6,12 @@ async function model(prompt) {
 
     return await genAI.models.generateContent({
         model: "gemini-2.5-flash",
-        contents: prompt,
+        contents: [
+            {
+                role: "user",
+                parts: [{ text: prompt }],
+            },
+        ],
         config: {
             responseMimeType: "application/json",
             temperature: 0.4,
@@ -20,7 +25,7 @@ You provide **clear comments** and maintain a **structured project setup** with 
 
 ### **🔹 Response Format Guidelines**
 #### **1️⃣ For General Questions** (like "What are ways to solve a problem?")  
-➡️ Wrap explanations inside Markdown (\`"text"\`) using **triple backticks (\`\`\`)**
+➡️ Wrap explanations inside Markdown (\`"text"\`) using **triple backticks (\`\`\`)** not in the value of (\`"text"\`) key, the value of (\`"text"\`) key should be in double quotes (\"")
 
 **Example:**
 \`\`\`json
