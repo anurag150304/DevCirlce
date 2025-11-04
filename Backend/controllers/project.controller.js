@@ -1,7 +1,7 @@
 import * as projectService from "../services/project.service.js";
 import { validationResult } from "express-validator";
 
-export const createProject = async (req, res) => {
+export async function createProject(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
@@ -13,7 +13,7 @@ export const createProject = async (req, res) => {
     }
 }
 
-export const getProjectInfo = async (req, res) => {
+export async function getProjectInfo(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
@@ -25,7 +25,7 @@ export const getProjectInfo = async (req, res) => {
     }
 }
 
-export const getProjects = async (req, res) => {
+export async function getProjects(req, res) {
     try {
         const projects = await projectService.getAllProjects(req.user._id);
         res.status(200).json(projects);
@@ -34,7 +34,7 @@ export const getProjects = async (req, res) => {
     }
 }
 
-export const addUserToProject = async (req, res) => {
+export async function addUserToProject(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
@@ -46,7 +46,7 @@ export const addUserToProject = async (req, res) => {
     }
 }
 
-export const updateFileTree = async (req, res) => {
+export async function updateFileTree(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
@@ -58,7 +58,7 @@ export const updateFileTree = async (req, res) => {
     }
 }
 
-export const deleteProject = async (req, res) => {
+export async function deleteProject(req, res) {
     try {
         await projectService.deleteProject(req.params.projectId, req.user._id);
         res.status(200).json({ message: "Project deleted successfully!" });

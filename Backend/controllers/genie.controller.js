@@ -1,6 +1,6 @@
 import * as genieService from '../services/genie.service.js';
 
-export const generateContent = async (req, res) => {
+export async function generateContent(req, res) {
     const { prompt } = req.query;
     if (!prompt) return res.status(400).json({ message: "Prompt is required" });
 

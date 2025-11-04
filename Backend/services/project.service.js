@@ -2,7 +2,7 @@ import e from "express";
 import projectModel from "../models/project.model.js";
 import mongoose from "mongoose";
 
-export const createProject = async (projectName, userId) => {
+export async function createProject(projectName, userId) {
     if (!projectName) {
         throw new Error('Project name is required');
     }
@@ -21,7 +21,7 @@ export const createProject = async (projectName, userId) => {
     }
 }
 
-export const getProjectInfo = async (projectId) => {
+export async function getProjectInfo(projectId) {
     if (!projectId) {
         throw new Error('Project ID is required');
     }
@@ -33,14 +33,14 @@ export const getProjectInfo = async (projectId) => {
     return await projectModel.findById(projectId).populate('users', 'fullname email');
 }
 
-export const getAllProjects = async (userId) => {
+export async function getAllProjects(userId) {
     if (!userId) {
         throw new Error('User ID is required');
     }
     return await projectModel.find({ users: userId });
 }
 
-export const addUserToProject = async (projectId, users, userId) => {
+export async function addUserToProject(projectId, users, userId) {
     if (!projectId) {
         throw new Error('Project ID is required');
     }
@@ -77,7 +77,7 @@ export const addUserToProject = async (projectId, users, userId) => {
     return project;
 }
 
-export const updateFileTree = async (projectId, fileTree, userId) => {
+export async function updateFileTree(projectId, fileTree, userId) {
     if (!projectId) {
         throw new Error('Project ID is required');
     }
@@ -108,7 +108,7 @@ export const updateFileTree = async (projectId, fileTree, userId) => {
     return project;
 }
 
-export const deleteProject = async (projectId, userId) => {
+export async function deleteProject(projectId, userId) {
     if (!projectId) {
         throw new Error('Project ID is required');
     }

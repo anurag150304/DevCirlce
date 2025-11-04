@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import userModel from "../models/user.model.js";
 import redisClient from "../services/redis.service.js";
-const userAuth = async (req, res, next) => {
+async function userAuth(req, res, next) {
     const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
     if (!token) return res.status(401).json({ message: "Access Denied. No token provided." });
 
