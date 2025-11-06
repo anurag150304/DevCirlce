@@ -1,14 +1,9 @@
-import e from "express";
 import projectModel from "../models/project.model.js";
 import mongoose from "mongoose";
 
 export async function createProject(projectName, userId) {
-    if (!projectName) {
-        throw new Error('Project name is required');
-    }
-    if (!userId) {
-        throw new Error('User ID is required');
-    }
+    if (!projectName) throw new Error('Project name is required');
+    if (!userId) throw new Error('User ID is required');
 
     try {
         return await projectModel.create({
@@ -17,26 +12,18 @@ export async function createProject(projectName, userId) {
         });
     } catch (error) {
         if (error.code === 11_000) throw new Error('Project name already exists');
-        throw error;
+        else throw error;
     }
 }
 
 export async function getProjectInfo(projectId) {
-    if (!projectId) {
-        throw new Error('Project ID is required');
-    }
-
-    if (!mongoose.Types.ObjectId.isValid(projectId)) {
-        throw new Error('Invalid project ID');
-    }
-
+    if (!projectId) throw new Error('Project ID is required');
+    if (!mongoose.Types.ObjectId.isValid(projectId)) throw new Error('Invalid project ID');
     return await projectModel.findById(projectId).populate('users', 'fullname email');
 }
 
 export async function getAllProjects(userId) {
-    if (!userId) {
-        throw new Error('User ID is required');
-    }
+    if (!userId) throw new Error('User ID is required');
     return await projectModel.find({ users: userId });
 }
 

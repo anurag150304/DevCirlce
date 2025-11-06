@@ -1,9 +1,10 @@
 import jwt from "jsonwebtoken";
 import userModel from "../models/user.model.js";
 import redisClient from "../services/redis.service.js";
+
 async function userAuth(req, res, next) {
     const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
-    if (!token) return res.status(401).json({ message: "Access Denied. No token provided." });
+    if (!token) return res.status(401).json({ message: "Access Denied! No token provided." });
 
     try {
         const isBlackListed = await redisClient.get(token);
@@ -14,7 +15,7 @@ async function userAuth(req, res, next) {
         req.user = user;
         next();
     } catch (error) {
-        res.status(401).json({ message: "Invalid Token" });
+        res.status(401).json({ message: "Access Denied! Invalid Token" });
     }
 }
 
