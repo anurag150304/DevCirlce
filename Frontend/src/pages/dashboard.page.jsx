@@ -108,6 +108,7 @@ export const Dashboard = () => {
     }, [messages]);
 
     const handleIncomingMessage = (incomingMessage) => {
+        console.log(incomingMessage)
         setMessages((prevMessages) => [
             ...prevMessages,
             {
@@ -486,7 +487,7 @@ export const Dashboard = () => {
                                 </div>
 
                                 {/* Editor Area */}
-                                <div className="flex-1 flex flex-col h-full">
+                                <div className="flex-1 flex flex-col h-full min-w-0 overflow-hidden">
                                     {/* Tab Bar */}
                                     {selectedFiles.length > 0 && (
                                         <div className="flex items-center gap-1 p-1 w-full bg-gray-900 border-gray-700 overflow-x-auto">
@@ -520,7 +521,7 @@ export const Dashboard = () => {
                                     {/* Editor Container */}
                                     {activeFile && (
                                         <div className="flex-1 p-2 bg-gray-700">
-                                            <div ref={editorContainerRef} className="relative w-full h-full bg-[#1e1e1e] rounded-lg shadow-lg border border-gray-700">
+                                            <div ref={editorContainerRef} className="relative w-full h-full min-h-0 bg-[#1e1e1e] rounded-lg shadow-lg border border-gray-700">
                                                 {/* Editor Controls */}
                                                 <div className="absolute top-2 right-2 flex items-center gap-2 z-50 bg-gray-800 rounded-lg px-1">
                                                     <button
@@ -554,24 +555,27 @@ export const Dashboard = () => {
                                                 </div>
 
                                                 <div className="h-full w-full pt-1 px-1 flex flex-col">
-                                                    <div className="flex-1 overflow-auto bg-[#282a36]">
-                                                        <CodeMirror
-                                                            value={fileTree.current[activeFile].file.contents}
-                                                            // height="80.5vh" // Ensures full viewport height
-                                                            className="h-[10vh]"
-                                                            theme={dracula}
-                                                            extensions={[javascript()]}
-                                                            onChange={(newValue) => {
-                                                                fileTree.current[activeFile].file.contents = newValue;
-                                                                saveFileTree(fileTree.current);
-                                                                webContainer?.fs.writeFile(`/${activeFile}`, newValue);
-                                                            }}
-                                                            basicSetup={{
-                                                                lineNumbers: true,
-                                                                highlightActiveLine: true,
-                                                                autocompletion: true,
-                                                            }}
-                                                        />
+                                                    <div className="flex-1 overflow-auto bg-[#282a36] min-w-0">
+                                                        <div className="h-full w-full overflow-auto min-w-0">
+                                                            <CodeMirror
+                                                                value={fileTree.current[activeFile].file.contents}
+                                                                height="100%"
+                                                                style={{ height: '100%' }}
+                                                                className="w-full h-full min-w-0"
+                                                                theme={dracula}
+                                                                extensions={[javascript()]}
+                                                                onChange={(newValue) => {
+                                                                    fileTree.current[activeFile].file.contents = newValue;
+                                                                    saveFileTree(fileTree.current);
+                                                                    webContainer?.fs.writeFile(`/${activeFile}`, newValue);
+                                                                }}
+                                                                basicSetup={{
+                                                                    lineNumbers: true,
+                                                                    highlightActiveLine: true,
+                                                                    autocompletion: true,
+                                                                }}
+                                                            />
+                                                        </div>
                                                     </div>
                                                 </div>
 
